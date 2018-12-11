@@ -1,0 +1,24 @@
+﻿@model List<Post>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Welcome!</h2>
+
+@if (ViewBag.IsAuth == true)
+{
+    @*<a href="/login">Login</a>*@
+    @Html.ActionLink("Logout", "Logout", "User")
+
+}
+else
+{
+    @Html.ActionLink("Login", "Login", "User")
+}
+<h3>All posts</h3>
+
+@{Html.RenderPartial("Posts", Model);}
+
+

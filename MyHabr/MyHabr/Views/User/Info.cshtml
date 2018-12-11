@@ -1,0 +1,13 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>My Page</h1>
+
+<h3>My posts</h3>
+@{Html.RenderPartial("Posts", Model.Posts);}
+
+@Html.ActionLink("Home", "All", "Post")

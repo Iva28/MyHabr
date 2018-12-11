@@ -1,0 +1,12 @@
+﻿
+@model Comment
+
+<form asp-action="AddComment" method="post">
+    <input asp-for="Post.Id" type="hidden" />
+    <input asp-for="User.Id" type="hidden" />
+    <label asp-for=Text>Add comment:</label>
+    <br/>
+    <textarea asp-for="Text" rows="4" cols="50">Enter comment here...</textarea>
+    <input type="submit" value="Send" />
+</form>
+

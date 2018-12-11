@@ -1,0 +1,13 @@
+﻿@model List<Post>
+
+<ul id="postsul">
+    @foreach (var p in Model)
+    {
+    <li>
+        <h4>@p.Title</h4>
+        @p.Preview
+        <br />
+        @Html.ActionLink("more", "PostInfo", "Post", new {@p.Id})
+    </li>
+    }
+</ul>

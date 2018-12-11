@@ -1,0 +1,31 @@
+﻿@model Post
+
+@{
+    ViewData["Title"] = "PostInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+<p>Date: @Model.Date.ToString("g")</p>
+<p>@Model.Preview @Model.Text</p>
+
+@if (ViewBag.IsAuth == true)
+{
+    Html.RenderPartial("Comment", new Comment() { Post = Model, User = Model.User });
+}
+
+<h2>All comments</h2>
+
+@foreach (var c in Model.Comments)
+{
+    <p>Date: @c.Date.ToString("g"), User: @c.User.Email,  Comment: @c.Text</p>
+}
+
+@if (ViewBag.IsAuth == true)
+{
+    @Html.ActionLink("Back To List", "Info", new { controller = "User" }, Model.User)
+}
+else
+{
+    @Html.ActionLink("Back To List", "All", "Post")
+}

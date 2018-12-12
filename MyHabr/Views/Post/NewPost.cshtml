@@ -1,8 +1,13 @@
 ﻿@model Post
 
+@{
+    ViewData["Title"] = "NewPost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 <h2>Add new Post</h2>
 
-<form asp-controller="Post" asp-action="AddPost" method="post">
+<form asp-controller="Post" asp-action="NewPost" method="post">
     <input asp-for="User.Id" type="hidden" />
 
     <label asp-for=Title>Title:</label>
@@ -19,4 +24,3 @@
     <br />
     <input type="submit" value="Add" />
 </form>
-

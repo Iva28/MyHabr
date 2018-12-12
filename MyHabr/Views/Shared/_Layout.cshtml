@@ -4,10 +4,31 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>My Habr</title>
-</head>
+    <link rel="stylesheet" type="text/css" href="~/styles.css" asp-append-version="true" /></head>
 <body>
-    <div>
+    <header>
+        <div class="logo">
+            <a href="@Url.Action("All", "Post")">
+                <img src="https://3dnews.ru/assets/external/illustrations/2018/09/20/975724/f1lqkaveikdfqkb_rip_4vq4s_8.png" />
+            </a>
+        </div>
+        @*<img src="https://pp.userapi.com/c303105/v303105106/3da5/WnBKlAleogI.jpg"/>*@
+        @if (ViewBag.IsAuth == true)
+        {
+            @*@Html.ActionLink("Logout", "Logout", "User");*@
+            @*@Html.ActionLink("MyPage", "Info", "User");*@
+
+            <a href="@Url.Action("Logout", "User")" class="logBtn">Logout</a>
+            <a href="@Url.Action("Info", "User")" class="myPageBtn">MyPage</a>
+        }
+
+        else
+        {
+            @*@Html.ActionLink("Login", "Login", "User")*@
+            <a href="@Url.Action("Login", "User")" class="logBtn">Login</a>
+        }
+
         @RenderBody()
-    </div>
+    </header>
 </body>
 </html>

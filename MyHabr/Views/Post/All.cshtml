@@ -5,19 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Welcome!</h2>
-
-@if (ViewBag.IsAuth == true)
-{
-    @Html.ActionLink("Logout", "Logout", "User");
-    <br/>
-    @Html.ActionLink("MyPage", "Info", "User");
-
-}
-else
-{
-    @Html.ActionLink("Login", "Login", "User")
-}
 <h3>All posts</h3>
 
 @Html.Partial("Posts", Model)

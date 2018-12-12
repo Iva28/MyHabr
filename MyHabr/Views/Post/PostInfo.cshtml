@@ -21,11 +21,11 @@
     <p>Date: @c.Date.ToString("g"), User: @c.User.Email,  Comment: @c.Text</p>
 }
 
-@if (ViewBag.IsAuth == true)
+@*@if (ViewBag.IsAuth == true)
 {
     @Html.ActionLink("Back To List", "Info", new { controller = "User" })
 }
 else
 {
     @Html.ActionLink("Back To List", "All", "Post")
-}
+}*@

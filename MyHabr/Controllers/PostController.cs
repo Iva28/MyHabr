@@ -53,8 +53,12 @@ namespace MyHabr.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddPost(Post p)
+        public IActionResult NewPost(Post p)
         {
+            if (Request.Cookies["user"] != null)
+                ViewBag.IsAuth = true;
+            else
+                ViewBag.IsAuth = false;
             postService.AddPost(p);
             return RedirectToAction("Info", "User");
         }
@@ -62,6 +66,10 @@ namespace MyHabr.Controllers
         [HttpGet]
         public IActionResult NewPost()
         {
+            if (Request.Cookies["user"] != null)
+                ViewBag.IsAuth = true;
+            else
+                ViewBag.IsAuth = false;
             var p = new Post();
             p.User = new User() { Id = Int32.Parse(Request.Cookies["user"])};
             return View(p);

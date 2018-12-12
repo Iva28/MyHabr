@@ -1,2 +1,29 @@
 ﻿body {
+    margin: 0;
+}
+
+
+img {
+    height: 150px;
+    width: 150px;
+}
+
+.logo {
+    text-align: center;
+}
+
+header{
+    height: 150px;
+}
+
+.logBtn {
+    position: absolute;
+    right: 45px;
+    top: 45px;
+}
+
+.myPageBtn {
+    position: absolute;
+    right: 45px;
+    top: 75px;
 }

@@ -9,8 +9,9 @@
 
 @if (ViewBag.IsAuth == true)
 {
-    @*<a href="/login">Login</a>*@
-    @Html.ActionLink("Logout", "Logout", "User")
+    @Html.ActionLink("Logout", "Logout", "User");
+    <br/>
+    @Html.ActionLink("MyPage", "Info", "User");
 
 }
 else
@@ -19,6 +20,6 @@ else
 }
 <h3>All posts</h3>
 
-@{Html.RenderPartial("Posts", Model);}
+@Html.Partial("Posts", Model)
 
 

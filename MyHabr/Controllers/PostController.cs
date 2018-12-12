@@ -21,11 +21,11 @@ namespace MyHabr.Controllers
         [HttpGet]
         public IActionResult All()
         {
-            List<Post> posts = postService.GetAllPosts();
             if (Request.Cookies["user"] != null)
                 ViewBag.IsAuth = true;
             else
                 ViewBag.IsAuth = false;
+            List<Post> posts = postService.GetAllPosts();
             return View(posts);
         }
 
@@ -52,10 +52,19 @@ namespace MyHabr.Controllers
             return RedirectToAction("PostInfo", "Post", new { c.Post.Id });
         }
 
+        [HttpPost]
         public IActionResult AddPost(Post p)
         {
             postService.AddPost(p);
-            return RedirectToAction("All", "Post");
+            return RedirectToAction("Info", "User");
+        }
+
+        [HttpGet]
+        public IActionResult NewPost()
+        {
+            var p = new Post();
+            p.User = new User() { Id = Int32.Parse(Request.Cookies["user"])};
+            return View(p);
         }
     }
 }

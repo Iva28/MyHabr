@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyHabr.Models;
 using MyHabr.Services;
 using MyHabr.ViewModels;
+using System;
 using System.Web;
 
 namespace MyHabr.Controllers
@@ -41,21 +42,21 @@ namespace MyHabr.Controllers
             {
                 Response.Cookies.Append("user", user.Id.ToString());
                 ViewBag.IsAuth = true;
-                return RedirectToAction("Info", "User", new { id = user.Id });
+                return RedirectToAction("Info", "User");
             }
             else
                 return NotFound();
         }
 
         [HttpGet]
-        public IActionResult Info(int id)
+        public IActionResult Info()
         {
             if (Request.Cookies["user"] != null)
                 ViewBag.IsAuth = true;
             else
                 ViewBag.IsAuth = false;
 
-            var us = userService.GetUserById(id);
+            var us = userService.GetUserById(Int32.Parse(Request.Cookies["user"]));
             return View(us);
         }
 

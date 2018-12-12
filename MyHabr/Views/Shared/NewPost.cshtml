@@ -1,0 +1,22 @@
+﻿@model Post
+
+<h2>Add new Post</h2>
+
+<form asp-controller="Post" asp-action="AddPost" method="post">
+    <input asp-for="User.Id" type="hidden" />
+
+    <label asp-for=Title>Title:</label>
+    <br />
+    <textarea asp-for="Title" rows="2" cols="50">Enter title here...</textarea>
+    <br />
+    <label asp-for=Preview>Preview:</label>
+    <br />
+    <textarea asp-for="Preview" rows="4" cols="50">Enter preview here...</textarea>
+    <br />
+    <label asp-for=Text>Text:</label>
+    <br />
+    <textarea asp-for="Text" rows="10" cols="50">Enter text here...</textarea>
+    <br />
+    <input type="submit" value="Add" />
+</form>
+

@@ -10,4 +10,8 @@
 <h3>My posts</h3>
 @{Html.RenderPartial("Posts", Model.Posts);}
 
+<br/>
+@Html.ActionLink("Add post", "NewPost", "Post", new { id = Model.Id })
+<br/>
+
 @Html.ActionLink("Home", "All", "Post")

@@ -46,6 +46,9 @@ namespace MyHabr
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
+
             app.UseMvc(routeBuilder => {
                 routeBuilder.MapRoute(
                     name: "userposts",

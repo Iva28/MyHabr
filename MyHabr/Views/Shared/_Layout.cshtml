@@ -15,17 +15,13 @@
         @*<img src="https://pp.userapi.com/c303105/v303105106/3da5/WnBKlAleogI.jpg"/>*@
         @if (ViewBag.IsAuth == true)
         {
-            @*@Html.ActionLink("Logout", "Logout", "User");*@
-            @*@Html.ActionLink("MyPage", "Info", "User");*@
-
-            <a href="@Url.Action("Logout", "User")" class="logBtn">Logout</a>
+            <a href="@Url.Action("SignOut", "User")" class="logBtn">Sign Out</a>
             <a href="@Url.Action("Info", "User")" class="myPageBtn">MyPage</a>
         }
 
         else
         {
-            @*@Html.ActionLink("Login", "Login", "User")*@
-            <a href="@Url.Action("Login", "User")" class="logBtn">Login</a>
+            <a href="@Url.Action("SignIn", "User")" class="logBtn">Sign In</a>
         }
 
         @RenderBody()

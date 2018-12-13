@@ -11,21 +11,13 @@
 
 @if (ViewBag.IsAuth == true)
 {
-    Html.RenderPartial("Comment", new Comment() { Post = Model, User = Model.User });
+    Html.RenderPartial("Comment", new CommentViewModel() { PostId = Model.Id });
 }
 
 <h2>All comments</h2>
 
 @foreach (var c in Model.Comments)
 {
-    <p>Date: @c.Date.ToString("g"), User: @c.User.Email,  Comment: @c.Text</p>
+        <p>Date: @c.Date.ToString("g"), User: @c.User.Email,  Comment: @c.Text</p>
 }
 
-@*@if (ViewBag.IsAuth == true)
-{
-    @Html.ActionLink("Back To List", "Info", new { controller = "User" })
-}
-else
-{
-    @Html.ActionLink("Back To List", "All", "Post")
-}*@

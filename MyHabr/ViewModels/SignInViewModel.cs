@@ -8,8 +8,9 @@ namespace MyHabr.ViewModels
 {
     public class SignInViewModel
     {
-      [Required(ErrorMessage = "Login is required")]
-      public string Login { get; set; }
+       [DataType(DataType.Text)]
+       [Required(ErrorMessage = "Login is required")]
+       public string Login { get; set; }
 
       [DataType(DataType.Password)]
       [Required(ErrorMessage = "Password is required")]

@@ -1,4 +1,4 @@
-﻿@model Post
+﻿@model NewPostViewModel
 
 @{
     ViewData["Title"] = "NewPost";
@@ -8,17 +8,15 @@
 <h2>Add new Post</h2>
 
 <form asp-controller="Post" asp-action="NewPost" method="post">
-    <input asp-for="User.Id" type="hidden" />
-
-    <label asp-for=Title>Title:</label>
+    <label asp-for=Title></label>
     <br />
     <textarea asp-for="Title" rows="2" cols="50">Enter title here...</textarea>
     <br />
-    <label asp-for=Preview>Preview:</label>
+    <label asp-for=Preview></label>
     <br />
     <textarea asp-for="Preview" rows="4" cols="50">Enter preview here...</textarea>
     <br />
-    <label asp-for=Text>Text:</label>
+    <label asp-for=Text></label>
     <br />
     <textarea asp-for="Text" rows="10" cols="50">Enter text here...</textarea>
     <br />

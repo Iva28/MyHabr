@@ -8,9 +8,10 @@ namespace MyHabr.Services
 {
     public interface IPostService
     {
+        void Initialize();
         List<Post> GetAllPosts();
-        Post AddPost(Post post);
+        Post AddPost(int userId, string title, string preview, string text);
         Post GetPost(int id);
-        void AddComment(Comment comment);
+        void AddComment(int userId, int postId, string text);
     }
 }

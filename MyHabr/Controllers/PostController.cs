@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyHabr.Models;
 using MyHabr.Services;
+using MyHabr.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,19 +13,24 @@ namespace MyHabr.Controllers
     {
         private IPostService postService;
 
-
         public PostController(IPostService postService)
         {
             this.postService = postService;
+            postService.Initialize();
         }
 
-        [HttpGet]
-        public IActionResult All()
+        public void SetIsAuth()
         {
             if (Request.Cookies["user"] != null)
                 ViewBag.IsAuth = true;
             else
                 ViewBag.IsAuth = false;
+        }
+
+        [HttpGet]
+        public IActionResult All()
+        {
+            SetIsAuth();
             List<Post> posts = postService.GetAllPosts();
             return View(posts);
         }
@@ -32,13 +38,9 @@ namespace MyHabr.Controllers
         [HttpGet]
         public IActionResult PostInfo(int id)
         {
-            if (Request.Cookies["user"] != null)
-                ViewBag.IsAuth = true;
-            else
-                ViewBag.IsAuth = false;
+            SetIsAuth();
             var post = postService.GetPost(id);
-            if (post != null)
-            {
+            if (post != null) {
                 return View(post);
             }
             else
@@ -46,33 +48,33 @@ namespace MyHabr.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddComment(Comment c)
+        public IActionResult AddComment(CommentViewModel model)
         {
-            postService.AddComment(c);
-            return RedirectToAction("PostInfo", "Post", new { c.Post.Id });
+            SetIsAuth();
+            if (ModelState.IsValid) {
+                postService.AddComment(Int32.Parse(Request.Cookies["user"]), model.PostId, model.Text);
+            }
+            return RedirectToAction("PostInfo", "Post", new { id = model.PostId });
+            //return RedirectToRoute("userposts", new { id = c.PostId });
         }
 
         [HttpPost]
-        public IActionResult NewPost(Post p)
+        public IActionResult NewPost(NewPostViewModel model)
         {
-            if (Request.Cookies["user"] != null)
-                ViewBag.IsAuth = true;
-            else
-                ViewBag.IsAuth = false;
-            postService.AddPost(p);
-            return RedirectToAction("Info", "User");
+            SetIsAuth();
+            if (ModelState.IsValid) {
+                postService.AddPost(Int32.Parse(Request.Cookies["user"]), model.Title, model.Preview, model.Text);
+                return RedirectToAction("Info", "User");
+            }
+            return View(model);
         }
 
         [HttpGet]
         public IActionResult NewPost()
         {
-            if (Request.Cookies["user"] != null)
-                ViewBag.IsAuth = true;
-            else
-                ViewBag.IsAuth = false;
-            var p = new Post();
-            p.User = new User() { Id = Int32.Parse(Request.Cookies["user"])};
-            return View(p);
+            SetIsAuth();
+            NewPostViewModel model = new NewPostViewModel();
+            return View(model);
         }
     }
 }

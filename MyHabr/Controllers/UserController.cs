@@ -17,54 +17,55 @@ namespace MyHabr.Controllers
             this.userService = userService;
         }
 
-        [HttpGet]
-        public IActionResult Login()
+        public void SetIsAuth()
         {
             if (Request.Cookies["user"] != null)
                 ViewBag.IsAuth = true;
             else
                 ViewBag.IsAuth = false;
+        }
+
+        [HttpGet]
+        public IActionResult SignIn()
+        {
+            SetIsAuth();
             SignInViewModel model = new SignInViewModel();
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult Login(SignInViewModel model)
+        public IActionResult SignIn(SignInViewModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                ViewBag.IsAuth = false;
+            if (!ModelState.IsValid) {
                 return View(model);
             }
 
             var user = userService.GetUser(model.Login, model.Password);
-            if (user != null)
-            {
+            if (user != null) {
                 Response.Cookies.Append("user", user.Id.ToString());
-                ViewBag.IsAuth = true;
+                SetIsAuth();
                 return RedirectToAction("Info", "User");
             }
-            else
-                return NotFound();
+            else {
+                SignInViewModel m = new SignInViewModel();
+                ModelState.Clear();
+                return View(model);
+            }
         }
 
         [HttpGet]
         public IActionResult Info()
         {
-            if (Request.Cookies["user"] != null)
-                ViewBag.IsAuth = true;
-            else
-                ViewBag.IsAuth = false;
-
+            SetIsAuth();
             var us = userService.GetUserById(Int32.Parse(Request.Cookies["user"]));
             return View(us);
         }
 
         [HttpGet]
-        public IActionResult Logout()
+        public IActionResult SignOut()
         {
             Response.Cookies.Delete("user");
-            ViewBag.IsAuth = false;
+            SetIsAuth();
             return RedirectToAction("All", "Post");
         }
     }

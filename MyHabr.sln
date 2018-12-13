@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyHabr", "MyHabr\MyHabr.csproj", "{B2852F56-3EDE-4BD3-85A3-C148228AFE5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyHabr", "MyHabr.csproj", "{424C6FAC-ED2F-47E2-AB6D-37AFC40E9189}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B2852F56-3EDE-4BD3-85A3-C148228AFE5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B2852F56-3EDE-4BD3-85A3-C148228AFE5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B2852F56-3EDE-4BD3-85A3-C148228AFE5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B2852F56-3EDE-4BD3-85A3-C148228AFE5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{424C6FAC-ED2F-47E2-AB6D-37AFC40E9189}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{424C6FAC-ED2F-47E2-AB6D-37AFC40E9189}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{424C6FAC-ED2F-47E2-AB6D-37AFC40E9189}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{424C6FAC-ED2F-47E2-AB6D-37AFC40E9189}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {6AD6BBB5-B7F4-4A14-AABC-F46D1B715A59}
+		SolutionGuid = {0A18A859-F3B5-4591-A908-B96E2B79CAF0}
 	EndGlobalSection
 EndGlobal

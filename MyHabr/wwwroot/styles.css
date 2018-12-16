@@ -1,29 +1,83 @@
 ﻿body {
     margin: 0;
+    overflow-x: hidden;
+    padding-top: 3px;
+    background-color: rgb(5,28,42);
 }
 
-
 img {
-    height: 150px;
-    width: 150px;
+    height: 160px;
+    width: 25%;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .logo {
-    text-align: center;
+    height: 250px;
+    background-image: url("https://api.pixonic.com/uploads/ckeditor/pictures/187/content_HABR-LOGO.jpg");
+    background-size: 70%;
+    background-position: center;
+    padding-top: 150px;
 }
 
-header{
-    height: 150px;
+.icon{
+    height: 25px;
+    width: 25px;
 }
 
 .logBtn {
     position: absolute;
-    right: 45px;
-    top: 45px;
+    right: 50px;
+    top: 15px;
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(41,131,169);
 }
 
 .myPageBtn {
     position: absolute;
-    right: 45px;
-    top: 75px;
+    right: 150px;
+    top: 15px;
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(41,131,169);
+}
+
+.page {
+    margin: 0 auto;
+    width: 66%;
+    height: 100vh;
+    background-color: white;
+}
+
+.content {
+    text-align: center;
+}
+
+
+.btn {
+    background-color: rgb(5,28,42);
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+.title {
+    text-decoration: none;
+    color: rgb(41,131,169);
+    font-size: 25px;
+}
+
+.post_info {
+    display: flex;
+    flex-direction: row;
+    height: 35px;
+}
+
+.post_info  *{
+    padding-left: 5px;
 }

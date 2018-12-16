@@ -63,7 +63,7 @@ namespace MyHabr.Controllers
         {
             SetIsAuth();
             if (ModelState.IsValid) {
-                postService.AddPost(Int32.Parse(Request.Cookies["user"]), model.Title, model.Preview, model.Text);
+                postService.AddPost(Int32.Parse(Request.Cookies["user"]), model.Title, model.Preview, model.Text, model.Image);
                 return RedirectToAction("Info", "User");
             }
             return View(model);

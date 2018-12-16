@@ -1,13 +1,21 @@
 ﻿@model List<Post>
 
-<ul id="postsul">
-    @foreach (var p in Model)
-    {
-    <li>
-        <h4>@p.Title</h4>
-        @p.Preview
+<ul id="postsul" style="list-style:none;">
+    @foreach (var p in Model) {
+    <li style="text-align:left; padding:10px;">
+        <div class="post_info">
+            @*@if (ViewBag.IsAuth != true)*@
+                <img class="icon" src="@p.User.Avatar" />
+                <p>@p.User.Email</p>
+            <p>@p.Date.ToString("g")</p>
+        </div>
+
+        @Html.ActionLink(@p.Title, "PostInfo", "Post", new { @p.Id }, htmlAttributes: new { @class = "title" })
         <br />
-        @Html.ActionLink("more", "PostInfo", "Post", new {@p.Id})
+        <img src="@p.Image" />
+        <br />
+        @p.Preview
+        @*@Html.ActionLink("more", "PostInfo", "Post", new { @p.Id })*@
     </li>
     }
 </ul>

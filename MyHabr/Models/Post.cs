@@ -28,6 +28,10 @@ namespace MyHabr.Models
         public DateTime Date { get; set; }
 
         [Required]
+        [DataType(DataType.ImageUrl)]
+        public string Image { get; set; }
+
+        [Required]
         [ForeignKey("UserId")]
         public virtual User User { get; set; }
 

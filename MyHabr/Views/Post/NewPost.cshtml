@@ -10,15 +10,19 @@
 <form asp-controller="Post" asp-action="NewPost" method="post">
     <label asp-for=Title></label>
     <br />
-    <textarea asp-for="Title" rows="2" cols="50">Enter title here...</textarea>
+    <textarea asp-for="Title" rows="2" cols="50"></textarea>
     <br />
     <label asp-for=Preview></label>
     <br />
-    <textarea asp-for="Preview" rows="4" cols="50">Enter preview here...</textarea>
+    <textarea asp-for="Preview" rows="4" cols="50"></textarea>
     <br />
     <label asp-for=Text></label>
     <br />
-    <textarea asp-for="Text" rows="10" cols="50">Enter text here...</textarea>
+    <textarea asp-for="Text" rows="10" cols="50" ></textarea>
+    <br />
+    <label asp-for=Image></label>
+    <br />
+    <input asp-for="Image"/>
     <br />
     <input type="submit" value="Add" />
 </form>

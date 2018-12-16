@@ -10,8 +10,8 @@ using MyHabr.Models;
 namespace MyHabr.Migrations
 {
     [DbContext(typeof(HabrDbContext))]
-    [Migration("20181213094304_Init")]
-    partial class Init
+    [Migration("20181216112810_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -59,6 +59,9 @@ namespace MyHabr.Migrations
                     b.Property<DateTime>("Date")
                         .ValueGeneratedOnAdd()
                         .HasDefaultValueSql("getdate()");
+
+                    b.Property<string>("Image")
+                        .IsRequired();
 
                     b.Property<string>("Preview")
                         .IsRequired()

@@ -25,7 +25,7 @@ namespace MyHabr.Models
         public DateTime RegistrationDate { get; set; }
 
         [Required]
-        [Url]
+        [DataType(DataType.ImageUrl)]
         public string Avatar { get; set; }
 
         public virtual List<Post> Posts { get; set; }

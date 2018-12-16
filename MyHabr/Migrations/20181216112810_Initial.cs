@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MyHabr.Migrations
 {
-    public partial class Init : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -35,6 +35,7 @@ namespace MyHabr.Migrations
                     Preview = table.Column<string>(maxLength: 500, nullable: false),
                     Text = table.Column<string>(maxLength: 5000, nullable: false),
                     Date = table.Column<DateTime>(nullable: false, defaultValueSql: "getdate()"),
+                    Image = table.Column<string>(nullable: false),
                     UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

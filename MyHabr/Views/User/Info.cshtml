@@ -5,11 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>My Page</h1>
+<div class="content">
+    <h1>@Model.Email</h1>
+    <img src="@Model.Avatar" />
+    <h3>My posts</h3>
+    @{Html.RenderPartial("Posts", Model.Posts);}
+    <br />
 
-<h3>My posts</h3>
-@{Html.RenderPartial("Posts", Model.Posts);}
+    @*@Html.ActionLink("Add post", "NewPost", "Post");*@
 
-<br/>
-@Html.ActionLink("Add post", "NewPost", "Post")
-<br/>
+    @Html.ActionLink("+", "NewPost", "Post", null, htmlAttributes: new { @class = "btn" })
+</div>

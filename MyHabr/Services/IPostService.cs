@@ -10,7 +10,7 @@ namespace MyHabr.Services
     {
         void Initialize();
         List<Post> GetAllPosts();
-        Post AddPost(int userId, string title, string preview, string text);
+        Post AddPost(int userId, string title, string preview, string text, string img);
         Post GetPost(int id);
         void AddComment(int userId, int postId, string text);
     }

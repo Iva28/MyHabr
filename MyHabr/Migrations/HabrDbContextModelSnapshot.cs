@@ -58,6 +58,9 @@ namespace MyHabr.Migrations
                         .ValueGeneratedOnAdd()
                         .HasDefaultValueSql("getdate()");
 
+                    b.Property<string>("Image")
+                        .IsRequired();
+
                     b.Property<string>("Preview")
                         .IsRequired()
                         .HasMaxLength(500);

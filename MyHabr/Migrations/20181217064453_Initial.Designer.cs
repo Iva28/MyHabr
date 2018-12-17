@@ -10,7 +10,7 @@ using MyHabr.Models;
 namespace MyHabr.Migrations
 {
     [DbContext(typeof(HabrDbContext))]
-    [Migration("20181216112810_Initial")]
+    [Migration("20181217064453_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

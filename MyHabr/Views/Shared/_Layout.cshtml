@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width" />
     <title>My Habr</title>
     @*<environment names="Development">
-        <link rel="stylesheet" type="text/css" href="" asp-fallback-test-class="hidden" asp-fallback-test-property="visibility" asp-fallback-test-value="hidden" />
-    </environment>*@
+            <link rel="stylesheet" type="text/css" href="..." asp-fallback-test-class="hidden" asp-fallback-test-property="visibility" asp-fallback-test-value="hidden" />
+        </environment>*@
     <link rel="stylesheet" type="text/css" href="~/styles.css" asp-append-version="true" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
 </head>
 <body>
     <header>
@@ -22,11 +25,26 @@
 
         else
         {
-            <a href="@Url.Action("SignIn", "User")" class="logBtn">Sign In</a>
+            //<a href="@Url.Action("SignIn", "User")" class="logBtn">Sign In</a>
+            <button onclick="btnOpen()" class="logBtn">Sign In</button>
         }
     </header>
     <div class="page">
         @RenderBody()
     </div>
+    @Html.Partial("SignInModalView", new SignInViewModel())
+
+    <script>
+
+        function btnOpen() {
+            let modal = document.getElementById('modal');
+            modal.style.display = "block";
+        }
+
+        function btnClose() {
+            let modal = document.getElementById('modal');
+            modal.style.display = "none";
+        }
+    </script>
 </body>
 </html>

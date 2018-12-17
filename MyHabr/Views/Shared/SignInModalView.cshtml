@@ -1,0 +1,27 @@
+﻿@model SignInViewModel
+
+
+
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+         <button onclick="btnClose()" class="closeBtn">x</button>
+        <form asp-controller="User" asp-action="SignIn" method="post" class="signInForm">
+            <div>
+            <label asp-for="Login"></label>
+            <input asp-for="Login" type="text" />
+            @*<span asp-validation-for="Login" style="color:red;"></span>*@
+            </div>
+            <br />
+            <div>
+            <label asp-for="Password"></label>
+            <input asp-for="Password" type="password" />
+            @*<span asp-validation-for="Password" style="color:red;"></span>*@
+            </div>
+            <br />
+            <input type="submit" value="Sign In"/>
+        </form>
+    </div>
+</div>
+
+

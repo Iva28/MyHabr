@@ -25,20 +25,20 @@ namespace MyHabr.Controllers
                 ViewBag.IsAuth = false;
         }
 
-        [HttpGet]
-        public IActionResult SignIn()
-        {
-            SetIsAuth();
-            SignInViewModel model = new SignInViewModel();
-            return View(model);
-        }
+        //[HttpGet]
+        //public IActionResult SignIn()
+        //{
+        //    SetIsAuth();
+        //    SignInViewModel model = new SignInViewModel();
+        //    return View(model);
+        //}
 
         [HttpPost]
         public IActionResult SignIn(SignInViewModel model)
         {
-            if (!ModelState.IsValid) {
-                return View(model);
-            }
+            //if (!ModelState.IsValid) {
+            //    return View(model);
+            //}
 
             var user = userService.GetUser(model.Login, model.Password);
             if (user != null) {
@@ -47,9 +47,10 @@ namespace MyHabr.Controllers
                 return RedirectToAction("Info", "User");
             }
             else {
-                SignInViewModel m = new SignInViewModel();
-                ModelState.Clear();
-                return View(model);
+                return NotFound();
+                //SignInViewModel m = new SignInViewModel();
+                //ModelState.Clear();
+                //return View(model);
             }
         }
 

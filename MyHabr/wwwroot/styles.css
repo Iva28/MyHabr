@@ -32,6 +32,7 @@ img {
     text-decoration: none;
     font-size: 20px;
     color: rgb(41,131,169);
+    border: none;
 }
 
 .myPageBtn {
@@ -81,3 +82,50 @@ img {
 .post_info  *{
     padding-left: 5px;
 }
+
+
+.modal {
+    display: none;
+    /*background-color: rgba(0,0,0,0.8);*/
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.modal-content{
+    width: 255px;
+    height: 140px;
+    border: 1px solid red;
+    position: relative;
+    padding: 10px;
+}
+.closeBtn {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+}
+
+.signInForm {
+    margin-top: 25px;
+    height: 80px;
+}
+
+.signInForm input[type=text], input[type=password] {
+    margin: 5px;
+    position: absolute;
+    right: 0;
+}
+
+.signInForm input[type=submit] {
+    display: block;
+    margin: 0 auto;
+}
+
+.signInForm div {
+    height: 30px;
+}
+

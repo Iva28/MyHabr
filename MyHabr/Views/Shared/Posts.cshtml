@@ -4,17 +4,17 @@
     @foreach (var p in Model) {
     <li style="text-align:left; padding:10px;">
         <div class="post_info">
-            @*@if (ViewBag.IsAuth != true)*@
-                <img class="icon" src="@p.User.Avatar" />
-                <p>@p.User.Email</p>
+            <img class="icon" src="@p.User.Avatar" />
+             <p>@p.User.Email</p>
             <p>@p.Date.ToString("g")</p>
         </div>
 
         @Html.ActionLink(@p.Title, "PostInfo", "Post", new { @p.Id }, htmlAttributes: new { @class = "title" })
         <br />
-        <img src="@p.Image" />
-        <br />
-        @p.Preview
+        <div style="display:flex;">
+            <div style="width:150px;"><img src="@p.Image" /></div>
+            <div style="margin-left:10px;"><p>@p.Preview</p></div>
+        </div>
         @*@Html.ActionLink("more", "PostInfo", "Post", new { @p.Id })*@
     </li>
     }

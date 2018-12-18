@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width" />
     <title>My Habr</title>
     @*<environment names="Development">
-            <link rel="stylesheet" type="text/css" href="..." asp-fallback-test-class="hidden" asp-fallback-test-property="visibility" asp-fallback-test-value="hidden" />
-        </environment>*@
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" asp-fallback-test-class="hidden" asp-fallback-test-property="visibility" asp-fallback-test-value="hidden" />
+     </environment>*@
     <link rel="stylesheet" type="text/css" href="~/styles.css" asp-append-version="true" />
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
@@ -26,7 +26,7 @@
         else
         {
             //<a href="@Url.Action("SignIn", "User")" class="logBtn">Sign In</a>
-            <button onclick="btnOpen()" class="logBtn">Sign In</button>
+            <a href='#' onclick="btnOpen()" class="logBtn">Sign In</a>
         }
     </header>
     <div class="page">
@@ -46,5 +46,8 @@
             modal.style.display = "none";
         }
     </script>
+
+
+
 </body>
 </html>

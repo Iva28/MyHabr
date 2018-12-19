@@ -6,12 +6,11 @@
     font-family: Arial;
 }
 
-
 div{
     box-sizing: border-box;
 }
 
-img {
+li img {
     height: 160px;
     width: 150px;
     margin-top: 10px;
@@ -26,9 +25,10 @@ img {
     padding-top: 150px;
 }
 
-.icon{
+.icon {
     height: 25px;
     width: 25px;
+    margin-top: 10px;
 }
 
 .logBtn {
@@ -53,14 +53,14 @@ img {
 .page {
     margin: 0 auto;
     width: 66%;
-    height: 100vh;
     background-color: white;
+    padding: 15px;
 }
 
 .content {
     text-align: center;
+    position: relative;
 }
-
 
 .btn {
     background-color: rgb(5,28,42);
@@ -71,6 +71,8 @@ img {
     cursor: pointer;
     border-radius: 50%;
     text-decoration: none;
+    position: absolute;
+    bottom: 2px;
 }
 
 .title {
@@ -89,7 +91,6 @@ img {
     padding-left: 5px;
 }
 
-
 .modal {
     display: none;
     background-color: rgba(0,0,0,0.8);
@@ -102,8 +103,6 @@ img {
 }
 
 .modal-content {
-    width: 300px;
-    height: 200px;
     padding: 10px;
     display: block;
     position: absolute;
@@ -112,9 +111,20 @@ img {
     bottom: 0;
     right: 0;
     margin: auto;
-    background-image: url("/Images/Untitled.png");
+    background-image: url("/Images/Font.png");
     border: 1px solid rgb(41,131,169);
 }
+
+.signin {
+    width: 300px;
+    height: 200px;
+}
+
+.newpost {
+    width: 630px;
+    height: 735px;
+}
+
 .closeBtn {
     position: absolute;
     top: 2px;
@@ -129,7 +139,6 @@ img {
     margin-top: 25px;
     height: 130px;
 }
-
 
 .signInForm input[type=submit] {
     display: block;
@@ -154,17 +163,79 @@ img {
     top: 20px;
 }
 
-.signInForm div > span {
+input:-webkit-autofill {
+    box-shadow: 0 0 0 30px #edeceb inset;
+}
+
+/*h1 {
+    color: rgb(5,28,42);
+}*/
+
+h2 {
+    color: rgb(41,131,169);
+}
+
+.imgPost {
+    width: 543px;
+}
+
+.newPostForm label{
+    color: white;
+}
+
+.signInForm .field-validation-error {
     position: absolute;
     right: 8px;
     color: rgb(41,131,169);
 }
 
-input:-webkit-autofill {
-    box-shadow: 0 0 0 30px #edeceb inset;
+.newPostForm .field-validation-error {
+    position: absolute;
+    right: 40px;
+    color: rgb(41,131,169);
 }
 
+.newPostForm label{
+    position:absolute;
+    left:30px;
+}
 
-h1 {
-    color: rgb(5,28,42);
+.newPostForm div {
+    position:relative;
+}
+
+.newPostForm input[type=submit] {
+    display: block;
+    margin: 0 auto;
+}
+
+.comment-box {
+    width: 400px;
+    padding-left: 5px;
+    background-color: #DADADA;
+    border: 4px solid #ccc;
+}
+
+.addcomment-box {
+    margin-top: 10px;
+}
+
+.addcomment-box textarea {
+    border: 4px solid #ccc;
+}
+
+.addcomment-box div {
+    position: relative;
+    width: 400px;
+}
+
+.addcomment-box .field-validation-error {
+    position: absolute;
+    right: 5px;
+    color: rgb(41,131,169);
+}
+
+.addcomment-box label {
+    position: absolute;
+    left: 5px;
 }

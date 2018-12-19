@@ -1,9 +1,15 @@
 ﻿@model CommentViewModel
 
-<form asp-action="AddComment" method="post">
-    <input asp-for="PostId"/>
-    <label asp-for=Text>Add comment:</label>
+<form asp-action="AddComment" method="post" class="addcomment-box">
+    <input asp-for="PostId" />
+    <div>
+        <label asp-for=Text style="">Add comment:</label>
+        <span asp-validation-for="Text"></span>
+    </div>
     <br />
-    <textarea asp-for="Text" rows="4" cols="50">Enter comment here...</textarea>
+    <textarea asp-for="Text" rows="4" cols="53">Enter comment here...</textarea>
+    <br />
     <input type="submit" value="Send" />
 </form>
+
+

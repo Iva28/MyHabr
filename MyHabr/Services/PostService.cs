@@ -68,7 +68,7 @@ namespace MyHabr.Services
                     }
 
                });
-               context.SaveChanges()
+                context.SaveChanges();
             }
         }
 

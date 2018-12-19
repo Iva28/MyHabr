@@ -69,12 +69,12 @@ namespace MyHabr.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        public IActionResult NewPost()
-        {
-            SetIsAuth();
-            NewPostViewModel model = new NewPostViewModel();
-            return View(model);
-        }
+        //[HttpGet]
+        //public IActionResult NewPost()
+        //{
+        //    SetIsAuth();
+        //    NewPostViewModel model = new NewPostViewModel();
+        //    return View(model);
+        //}
     }
 }

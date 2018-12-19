@@ -7,22 +7,28 @@
 
 <h2>Add new Post</h2>
 
+<div style="position:relative;">
 <form asp-controller="Post" asp-action="NewPost" method="post">
     <label asp-for=Title></label>
+    <span asp-validation-for="Title"></span>
     <br />
     <textarea asp-for="Title" rows="2" cols="50"></textarea>
     <br />
     <label asp-for=Preview></label>
+    <span asp-validation-for="Preview"></span>
     <br />
     <textarea asp-for="Preview" rows="4" cols="50"></textarea>
     <br />
     <label asp-for=Text></label>
+    <span asp-validation-for="Text"></span>
     <br />
-    <textarea asp-for="Text" rows="10" cols="50" ></textarea>
+    <textarea asp-for="Text" rows="10" cols="50"></textarea>
     <br />
     <label asp-for=Image></label>
+    <span asp-validation-for="Image"></span>
     <br />
-    <input asp-for="Image"/>
+    <input asp-for="Image" />
     <br />
     <input type="submit" value="Add" />
 </form>
+</div>

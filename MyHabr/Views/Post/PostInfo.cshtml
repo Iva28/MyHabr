@@ -5,19 +5,41 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Title</h2>
-<p>Date: @Model.Date.ToString("g")</p>
-<p>@Model.Preview @Model.Text</p>
+<div>
+    <h2>@Model.Title</h2>
+    <p>Date: @Model.Date.ToString("g")</p>
+    <img src="@Model.Image" style="max-width:700px;" />
+    <p>@Model.Preview</p>
+    <p>@Model.Text</p>
 
-@if (ViewBag.IsAuth == true)
-{
-    Html.RenderPartial("Comment", new CommentViewModel() { PostId = Model.Id });
-}
+    <h2>Comments (@Model.Comments.Count)</h2>
+    @if (@Model.Comments.Count != 0)
+    {
+        @foreach (var c in Model.Comments)
+        {
+            @*<p>Date: @c.Date.ToString("g"), User: @c.User.Email,  Comment: @c.Text</p>*@
 
-<h2>All comments</h2>
+            <div style="display: flex; flex-direction: row;">
+                <img class="icon" src="@c.User.Avatar" />
+                <p>@c.User.Email</p>
+                <p>@c.Date.ToString("g")</p>
+            </div>
+            <div class="comment-box">
+                <p>@c.Text</p>
+            </div>
+        }
+    }
 
-@foreach (var c in Model.Comments)
-{
-    <p>Date: @c.Date.ToString("g"), User: @c.User.Email,  Comment: @c.Text</p>
-}
+    else
+    {
+        <h2>No comments yet</h2>
+    }
+
+    @if (ViewBag.IsAuth == true)
+    {
+        Html.RenderPartial("Comment", new CommentViewModel() { PostId = Model.Id });
+    }
+</div>
+
+
 

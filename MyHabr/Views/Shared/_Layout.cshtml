@@ -1,5 +1,4 @@
 ﻿<!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -20,7 +19,7 @@
         @if (ViewBag.IsAuth == true)
         {
             <a href="@Url.Action("SignOut", "User")" class="logBtn">Sign Out</a>
-            <a href="@Url.Action("Info", "User")" class="myPageBtn">MyPage</a>
+            <a href="@Url.Action("Info", "User")" class="myPageBtn">My Page</a>
         }
 
         else
@@ -35,7 +34,6 @@
     @Html.Partial("SignInModalView", new SignInViewModel())
 
     <script>
-
         function btnOpen() {
             let modal = document.getElementById('modal');
             modal.style.display = "block";
@@ -46,6 +44,7 @@
             modal.style.display = "none";
         }
     </script>
+
 
 
 

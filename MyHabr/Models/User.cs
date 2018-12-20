@@ -28,7 +28,7 @@ namespace MyHabr.Models
         [DataType(DataType.ImageUrl)]
         public string Avatar { get; set; }
 
-        public virtual List<Post> Posts { get; set; }
-        public virtual List<Comment> Comments { get; set; }
+        public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
+        public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MyHabr.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -31,8 +31,8 @@ namespace MyHabr.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<string>(maxLength: 100, nullable: false),
-                    Preview = table.Column<string>(maxLength: 500, nullable: false),
+                    Title = table.Column<string>(maxLength: 200, nullable: false),
+                    Preview = table.Column<string>(maxLength: 1500, nullable: false),
                     Text = table.Column<string>(maxLength: 5000, nullable: false),
                     Date = table.Column<DateTime>(nullable: false, defaultValueSql: "getdate()"),
                     Image = table.Column<string>(nullable: false),

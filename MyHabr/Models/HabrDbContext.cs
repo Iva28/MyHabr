@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -24,6 +26,14 @@ namespace MyHabr.Models
             modelBuilder.Entity<Post>().Property(b => b.Date).HasDefaultValueSql("getdate()");
 
             modelBuilder.Entity<Comment>().Property(b => b.Date).HasDefaultValueSql("getdate()");
+
+            //modelBuilder.Entity<User>().HasData(new User {
+            //    Email = "user@mail.ru",
+            //    Login = "user",
+            //    Password = "user",
+            //    RegistrationDate = DateTime.Now,
+            //    Avatar = "http://romanroadtrust.co.uk/wp-content/uploads/2018/01/profile-icon-png-898-300x300.png"
+            //});
         }
     }
 }

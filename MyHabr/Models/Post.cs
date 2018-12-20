@@ -13,11 +13,11 @@ namespace MyHabr.Models
         public int Id { get; set; }
 
         [Required]
-        [StringLength(100, MinimumLength = 5)]
+        [StringLength(200, MinimumLength = 5)]
         public string Title { get; set; }
 
         [Required]
-        [StringLength(500, MinimumLength = 5)]
+        [StringLength(1500, MinimumLength = 5)]
         public string Preview { get; set; }
 
         [Required]
@@ -35,6 +35,6 @@ namespace MyHabr.Models
         [ForeignKey("UserId")]
         public virtual User User { get; set; }
 
-        public virtual List<Comment> Comments { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
     }
 }

@@ -38,35 +38,4 @@
 
 
 
-@*<div id="modalPost" class="modal">
-    <div class="modal-post-content">
-        <button onclick="btnModalClose()" class="closeBtn">x</button>
-        <h2>Add new Post</h2>
-        <form asp-controller="Post" asp-action="NewPost" method="post" class="newPostForm">
-            <label asp-for=Title></label>
-            <span asp-validation-for="Title"></span>
-            <br />
-            <textarea asp-for="Title" rows="3" cols="75"></textarea>
-            <br />
-            <label asp-for=Preview></label>
-            <span asp-validation-for="Preview"></span>
-            <br />
-            <textarea asp-for="Preview" rows="6" cols="75"></textarea>
-            <br />
-            <label asp-for=Text></label>
-            <span asp-validation-for="Text"></span>
-            <br />
-            <textarea asp-for="Text" rows="23" cols="75"></textarea>
-            <br />
-            <label asp-for=Image></label>
-            <span asp-validation-for="Image"></span>
-            <br />
-            <input asp-for="Image" class="imgPost" />
-            <br />
-            <input type="submit" value="Add" />
-        </form>
-    </div>
-</div>*@
-
-
     

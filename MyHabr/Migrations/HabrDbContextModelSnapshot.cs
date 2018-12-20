@@ -63,7 +63,7 @@ namespace MyHabr.Migrations
 
                     b.Property<string>("Preview")
                         .IsRequired()
-                        .HasMaxLength(500);
+                        .HasMaxLength(1500);
 
                     b.Property<string>("Text")
                         .IsRequired()
@@ -71,7 +71,7 @@ namespace MyHabr.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(100);
+                        .HasMaxLength(200);
 
                     b.Property<int?>("UserId")
                         .IsRequired();

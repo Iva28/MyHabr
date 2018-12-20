@@ -55,7 +55,6 @@ namespace MyHabr.Controllers
                 postService.AddComment(Int32.Parse(Request.Cookies["user"]), model.PostId, model.Text);
             }
             return RedirectToAction("PostInfo", "Post", new { id = model.PostId });
-            //return RedirectToRoute("userposts", new { id = c.PostId });
         }
 
         [HttpPost]

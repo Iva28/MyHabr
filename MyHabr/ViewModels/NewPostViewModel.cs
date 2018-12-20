@@ -6,12 +6,12 @@ namespace MyHabr.ViewModels
     {
         [Display(Name = "Title")]
         [Required(ErrorMessage = "Title is required")]
-        [StringLength(100, MinimumLength = 5, ErrorMessage = "Title must be between 5 and 100 characters")]
+        [StringLength(200, MinimumLength = 5, ErrorMessage = "Title must be between 5 and 200 characters")]
         public string Title { get; set; }
 
         [Display(Name = "Preview")]
         [Required(ErrorMessage = "Preview is required")]
-        [StringLength(500, MinimumLength = 5, ErrorMessage = "Preview must be between 5 and 500 characters")]
+        [StringLength(1500, MinimumLength = 5, ErrorMessage = "Preview must be between 5 and 1500 characters")]
         public string Preview { get; set; }
 
         [Display(Name = "Text")]

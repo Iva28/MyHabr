@@ -10,8 +10,8 @@ using MyHabr.Models;
 namespace MyHabr.Migrations
 {
     [DbContext(typeof(HabrDbContext))]
-    [Migration("20181217064453_Initial")]
-    partial class Initial
+    [Migration("20181220071250_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -65,7 +65,7 @@ namespace MyHabr.Migrations
 
                     b.Property<string>("Preview")
                         .IsRequired()
-                        .HasMaxLength(500);
+                        .HasMaxLength(1500);
 
                     b.Property<string>("Text")
                         .IsRequired()
@@ -73,7 +73,7 @@ namespace MyHabr.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(100);
+                        .HasMaxLength(200);
 
                     b.Property<int?>("UserId")
                         .IsRequired();

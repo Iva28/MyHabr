@@ -17,12 +17,9 @@
     {
         @foreach (var c in Model.Comments)
         {
-            @*<p>Date: @c.Date.ToString("g"), User: @c.User.Email,  Comment: @c.Text</p>*@
-
             <div style="display: flex; flex-direction: row;">
                 <img class="icon" src="@c.User.Avatar" />
-                <p>@c.User.Email</p>
-                <p>@c.Date.ToString("g")</p>
+                <p>@c.User.Email @c.Date.ToString("g")</p>
             </div>
             <div class="comment-box">
                 <p>@c.Text</p>
@@ -40,6 +37,25 @@
         Html.RenderPartial("Comment", new CommentViewModel() { PostId = Model.Id });
     }
 </div>
+
+<script>
+    //$('#commentBox').submit(function (e) {
+    //    e.preventDefault();
+    //    var $form = $(this);
+
+    //    if (!$form.valid()) return false;
+
+    //    $.ajax({
+    //        type: 'POST',
+    //        url: "/Post/AddComment",
+    //        data: $('#commentBox').serialize(),
+    //        success: function () {
+    //            console.log($form);
+    //        }
+    //    });
+    //});
+
+</script>
 
 
 

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using MyHabr.Models;
-using MyHabr.ViewModels;
 
 namespace MyHabr.Services
 {
@@ -16,14 +14,14 @@ namespace MyHabr.Services
             this.context = context;
         }
 
-        public User GetUser(string login, string password)
+        public async Task<User> GetUser(string login, string password)
         {
-            return context.Users.ToList().Find(u => u.Login == login && u.Password == password);
+            return await context.Users.Where(u => u.Login == login && u.Password == password).FirstOrDefaultAsync();
         }
 
-        public User GetUserById(int id)
+        public async Task<User> GetUserById(int id)
         {
-            return context.Users.ToList().Find(u => u.Id == id);
+            return await context.Users.FindAsync(id);
         }
     }
 }

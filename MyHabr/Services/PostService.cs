@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using MyHabr.Models;
 using Newtonsoft.Json;
 
@@ -52,27 +54,28 @@ namespace MyHabr.Services
             }
         }
 
-        public List<Post> GetAllPosts()
+        public async Task<List<Post>> GetAllPosts()
         {
-            return context.Posts.ToList();
+            return await context.Posts.ToListAsync();
         }
 
-        public Post GetPost(int id)
+        public async Task<Post> GetPost(int id)
         {
-            return GetAllPosts().Find(p => p.Id == id);
+           return await context.Posts.FindAsync(id);
         }
 
-        public void AddComment(int userId, int postId, string text)
+        public async Task<Comment> AddComment(int userId, int postId, string text)
         {
             var comment = new Comment();
             comment.Post = context.Posts.Find(postId);
             comment.User = context.Users.Find(userId);
             comment.Text = text;
             context.Comments.Add(comment);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
+            return comment;
         }
 
-        public Post AddPost(int userId, string title, string preview, string text, string img)
+        public async Task<Post> AddPost(int userId, string title, string preview, string text, string img)
         {
             var post = new Post();
             post.User = context.Users.Find(userId);
@@ -81,7 +84,7 @@ namespace MyHabr.Services
             post.Text = text;
             post.Image = img;
             context.Posts.Add(post);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
             return post;
         }
     }

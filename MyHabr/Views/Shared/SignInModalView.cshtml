@@ -3,22 +3,43 @@
 
 <div id="modal" class="modal">
     <div class="modal-content signin">
-         <button onclick="btnClose()" class="closeBtn">x</button>
-        <form asp-controller="User" asp-action="SignIn" method="post" class="signInForm">
-           <div>
-               <label asp-for="Login"></label>
-               <span asp-validation-for="Login"></span>
-               <input asp-for="Login" type="text"/>
-           </div>
-           <br />
-           <div>
-               <label asp-for="Password" ></label>
-               <span asp-validation-for="Password"></span>
-               <input asp-for="Password" type="password"/>
-           </div>
-           <input type="submit" value="Sign In" />           
+        <button onclick="btnClose()" class="closeBtn">x</button>
+        <form asp-controller="User" asp-action="SignIn" method="post" class="signInForm" id="signInForm">
+            <div>
+                <label asp-for="Login"></label>
+                <span asp-validation-for="Login"></span>
+                <input asp-for="Login" type="text" />
+            </div>
+            <br />
+            <div>
+                <label asp-for="Password"></label>
+                <span asp-validation-for="Password"></span>
+                <input asp-for="Password" type="password" />
+            </div>
+            <div style="text-align: center; padding-top:3px;">
+                <span id="error" style="color: rgb(41,131,169); "></span>
+            </div>
+            <input type="submit" value="Sign In" />
         </form>
     </div>
 </div>
 
-
+<script>
+    $('#signInForm').submit(function (e) {
+        e.preventDefault();
+        var $form = $(this);
+        if (!$form.valid()) return false;
+        $.ajax({
+            type: 'POST',
+            url: "/User/SignIn",
+            data: $('#signInForm').serialize(),
+            success: function () {
+                $("#modal").hide();
+                location.reload(); 
+            },
+            error: function () {
+                $('#error').text("Invalid login or password");
+            }
+        });
+    });
+</script>

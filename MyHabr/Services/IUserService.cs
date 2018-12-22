@@ -9,7 +9,7 @@ namespace MyHabr.Services
 {
     public interface IUserService
     {
-        User GetUser(string login, string password);
-        User GetUserById(int id);
+        Task<User> GetUser(string login, string password);
+        Task<User> GetUserById(int id);
     }
 }

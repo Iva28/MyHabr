@@ -13,6 +13,8 @@
     <p>@Model.Text</p>
 
     <h2>Comments (@Model.Comments.Count)</h2>
+
+    <div id="container"></div>
     @if (@Model.Comments.Count != 0)
     {
         @foreach (var c in Model.Comments)
@@ -38,24 +40,22 @@
     }
 </div>
 
-<script>
-    //$('#commentBox').submit(function (e) {
-    //    e.preventDefault();
-    //    var $form = $(this);
+@*<script>
+    $('#commentBox').submit(function (e) {
+        e.preventDefault();
+        var $form = $(this);
+        if (!$form.valid()) return false;
+        $.ajax({
+            type: 'POST',
+            url: "/Post/AddComment",
+            data: $('#commentBox').serialize(),
+            success: function (result) {
 
-    //    if (!$form.valid()) return false;
-
-    //    $.ajax({
-    //        type: 'POST',
-    //        url: "/Post/AddComment",
-    //        data: $('#commentBox').serialize(),
-    //        success: function () {
-    //            console.log($form);
-    //        }
-    //    });
-    //});
-
-</script>
-
+            },
+            error: function () {
+            }
+        });
+    });
+</script>*@
 
 

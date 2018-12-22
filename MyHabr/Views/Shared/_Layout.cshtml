@@ -18,7 +18,7 @@
         </a>
         @if (ViewBag.IsAuth == true)
         {
-            <a href="@Url.Action("SignOut", "User")" class="logBtn">Sign Out</a>
+            <a href="@Url.Action("SignOut", "User")" class="logBtn" id="signOut">Sign Out</a>
             <a href="@Url.Action("Info", "User")" class="myPageBtn">My Page</a>
         }
 
@@ -43,7 +43,18 @@
             let modal = document.getElementById('modal');
             modal.style.display = "none";
         }
-    </script>
 
+        $('#signOut').click(function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'GET',
+                url: "/User/SignOut",
+                data: $('#signInForm').serialize(),
+                success: function () {
+                    location.reload();
+                }
+            });
+        });
+    </script>
 </body>
 </html>

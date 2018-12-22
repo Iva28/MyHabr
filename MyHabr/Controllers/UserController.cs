@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using MyHabr.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 using MyHabr.Services;
 using MyHabr.ViewModels;
 using System;
-using System.Web;
+using System.Threading.Tasks;
 
 namespace MyHabr.Controllers
 {
@@ -25,40 +23,23 @@ namespace MyHabr.Controllers
                 ViewBag.IsAuth = false;
         }
 
-        //[HttpGet]
-        //public IActionResult SignIn()
-        //{
-        //    SetIsAuth();
-        //    SignInViewModel model = new SignInViewModel();
-        //    return View(model);
-        //}
-
         [HttpPost]
-        public IActionResult SignIn(SignInViewModel model)
+        public async Task<IActionResult> SignIn(SignInViewModel model)
         {
-            //if (!ModelState.IsValid) {
-            //    return View(model);
-            //}
-
-            var user = userService.GetUser(model.Login, model.Password);
+            var user = await userService.GetUser(model.Login, model.Password);
             if (user != null) {
                 Response.Cookies.Append("user", user.Id.ToString());
                 SetIsAuth();
-                return RedirectToAction("Info", "User");
+                return Ok();
             }
-            else {
-                return NotFound();
-                //SignInViewModel m = new SignInViewModel();
-                //ModelState.Clear();
-                //return View(model);
-            }
+            return NotFound();
         }
 
         [HttpGet]
-        public IActionResult Info()
+        public async Task<IActionResult> Info()
         {
             SetIsAuth();
-            var us = userService.GetUserById(Int32.Parse(Request.Cookies["user"]));
+            var us = await userService.GetUserById(Int32.Parse(Request.Cookies["user"]));
             return View(us);
         }
 
@@ -67,7 +48,8 @@ namespace MyHabr.Controllers
         {
             Response.Cookies.Delete("user");
             SetIsAuth();
-            return RedirectToAction("All", "Post");
+            return Ok();
+            //return RedirectToAction("All", "Post");
         }
     }
 }

@@ -4,7 +4,7 @@ using MyHabr.Services;
 using MyHabr.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace MyHabr.Controllers
@@ -28,52 +28,39 @@ namespace MyHabr.Controllers
         }
 
         [HttpGet]
-        public IActionResult All()
+        public async Task<IActionResult> All()
         {
             SetIsAuth();
-            List<Post> posts = postService.GetAllPosts();
+            List<Post> posts = await postService.GetAllPosts();
             return View(posts);
         }
 
         [HttpGet]
-        public IActionResult PostInfo(int id)
+        public async Task<IActionResult> PostInfo(int id)
         {
             SetIsAuth();
-            var post = postService.GetPost(id);
+            var post = await postService.GetPost(id);
             if (post != null) {
                 return View(post);
             }
-            else
-                return NotFound();
+            return NotFound();
         }
 
         [HttpPost]
-        public IActionResult AddComment(CommentViewModel model)
+        public async Task<IActionResult> AddComment(CommentViewModel model)
         {
             SetIsAuth();
-            if (ModelState.IsValid) {
-                postService.AddComment(Int32.Parse(Request.Cookies["user"]), model.PostId, model.Text);
-            }
+            Comment c = await postService.AddComment(Int32.Parse(Request.Cookies["user"]), model.PostId, model.Text);
+            //return Ok(c);
             return RedirectToAction("PostInfo", "Post", new { id = model.PostId });
         }
 
         [HttpPost]
-        public IActionResult NewPost(NewPostViewModel model)
+        public async Task<IActionResult> NewPost(NewPostViewModel model)
         {
             SetIsAuth();
-            if (ModelState.IsValid) {
-                postService.AddPost(Int32.Parse(Request.Cookies["user"]), model.Title, model.Preview, model.Text, model.Image);
-                return RedirectToAction("Info", "User");
-            }
-            return View(model);
+            await postService.AddPost(Int32.Parse(Request.Cookies["user"]), model.Title, model.Preview, model.Text, model.Image);
+            return RedirectToAction("Info", "User");
         }
-
-        //[HttpGet]
-        //public IActionResult NewPost()
-        //{
-        //    SetIsAuth();
-        //    NewPostViewModel model = new NewPostViewModel();
-        //    return View(model);
-        //}
     }
 }

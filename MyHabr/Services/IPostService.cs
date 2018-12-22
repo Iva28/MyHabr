@@ -9,9 +9,9 @@ namespace MyHabr.Services
     public interface IPostService
     {
         void Initialize();
-        List<Post> GetAllPosts();
-        Post AddPost(int userId, string title, string preview, string text, string img);
-        Post GetPost(int id);
-        void AddComment(int userId, int postId, string text);
+        Task<List<Post>> GetAllPosts();
+        Task<Post> AddPost(int userId, string title, string preview, string text, string img);
+        Task<Post> GetPost(int id);
+        Task<Comment> AddComment(int userId, int postId, string text);
     }
 }

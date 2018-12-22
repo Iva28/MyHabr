@@ -10,9 +10,9 @@ div{
     box-sizing: border-box;
 }
 
-li img {
+.img-post {
     height: 160px;
-    width: 150px;
+    width: 180px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -116,8 +116,8 @@ li img {
 }
 
 .signin {
-    width: 300px;
-    height: 200px;
+    width: 310px;
+    height: 225px;
 }
 
 .newpost {
@@ -137,12 +137,15 @@ li img {
 
 .signInForm {
     margin-top: 25px;
-    height: 130px;
+    height: 170px;
+    position: relative;
 }
 
 .signInForm input[type=submit] {
     display: block;
-    margin: 15px auto;
+    position: absolute;
+    left: 112px;
+    bottom: 5px;
 }
 
 .signInForm div {

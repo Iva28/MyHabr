@@ -16,7 +16,6 @@ namespace MyHabr.Controllers
         public PostController(IPostService postService)
         {
             this.postService = postService;
-            postService.Initialize();
         }
 
         public void SetIsAuth()
@@ -51,8 +50,9 @@ namespace MyHabr.Controllers
         {
             SetIsAuth();
             Comment c = await postService.AddComment(Int32.Parse(Request.Cookies["user"]), model.PostId, model.Text);
-            //return Ok(c);
-            return RedirectToAction("PostInfo", "Post", new { id = model.PostId });
+            if (c!= null)
+                return Json(new { success = true, c.User.Avatar, c.User.Email, Date = c.Date.ToString("g"), c.Text });
+            return Json(new { success = false, responseText = "error" });
         }
 
         [HttpPost]

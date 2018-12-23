@@ -12,27 +12,29 @@
     <p>@Model.Preview</p>
     <p>@Model.Text</p>
 
-    <h2>Comments (@Model.Comments.Count)</h2>
+    <h2 id="comCount">Comments (@Model.Comments.Count)</h2>
 
-    <div id="container"></div>
-    @if (@Model.Comments.Count != 0)
-    {
-        @foreach (var c in Model.Comments)
+    <div id="container" style="width:auto;">
+        @if (@Model.Comments.Count != 0)
         {
-            <div style="display: flex; flex-direction: row;">
-                <img class="icon" src="@c.User.Avatar" />
-                <p>@c.User.Email @c.Date.ToString("g")</p>
-            </div>
-            <div class="comment-box">
-                <p>@c.Text</p>
-            </div>
+            @foreach (var c in Model.Comments)
+            {
+                <div>
+                    <div style="display: flex;">
+                        <img class="icon" src="@c.User.Avatar" />
+                        <p>@c.User.Email @c.Date.ToString("g")</p>
+                    </div>
+                    <div class="comment-box">
+                        <p>@c.Text</p>
+                    </div>
+                </div>
+            }
         }
-    }
-
     else
     {
         <h2>No comments yet</h2>
     }
+    </div>
 
     @if (ViewBag.IsAuth == true)
     {
@@ -40,7 +42,7 @@
     }
 </div>
 
-@*<script>
+<script>
     $('#commentBox').submit(function (e) {
         e.preventDefault();
         var $form = $(this);
@@ -50,12 +52,18 @@
             url: "/Post/AddComment",
             data: $('#commentBox').serialize(),
             success: function (result) {
-
-            },
-            error: function () {
+                if ($("#container").has("h2").length != 0) {
+                    $("#container").empty();
+                }
+                var newComment = "<div><div style='display: flex; flex-direction: row;'><img class='icon' src=" + result.avatar + "><p>" +
+                    result.email + " " + result.date + "</p></div><div class='comment-box'><p>" + result.text + "</p></div></div>";
+                $('#container').append(newComment);
+                $("#commentBox").trigger('reset'); 
+                var newCount = $("#container > div").length;
+                $("#comCount").replaceWith("<h2 id='comCount'>Comments (" + newCount + ") </h2>");
             }
         });
     });
-</script>*@
+</script>
 
 

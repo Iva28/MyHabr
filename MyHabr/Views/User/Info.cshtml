@@ -12,9 +12,6 @@
     @{Html.RenderPartial("Posts", Model.Posts);}
     <br />
 
-    @*@Html.ActionLink("Add post", "NewPost", "Post");*@
-    @*@Html.ActionLink("+", "NewPost", "Post", null, htmlAttributes: new { @class = "btn" })*@
-
     <a href='#' onclick="btnModalOpen()" class="btn">+</a>
 
     @Html.Partial("NewPostModalView", new NewPostViewModel())

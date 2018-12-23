@@ -8,7 +8,6 @@ namespace MyHabr.Services
 {
     public interface IPostService
     {
-        void Initialize();
         Task<List<Post>> GetAllPosts();
         Task<Post> AddPost(int userId, string title, string preview, string text, string img);
         Task<Post> GetPost(int id);

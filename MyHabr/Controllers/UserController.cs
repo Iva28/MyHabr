@@ -49,7 +49,6 @@ namespace MyHabr.Controllers
             Response.Cookies.Delete("user");
             SetIsAuth();
             return Ok();
-            //return RedirectToAction("All", "Post");
         }
     }
 }

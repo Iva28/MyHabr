@@ -18,42 +18,6 @@ namespace MyHabr.Services
             this.context = context;
         }
 
-        public void Initialize()
-        {
-            if (context.Users.Count() == 0)
-            {
-                context.Users.Add(new User()
-                {
-                    Email = "user@mail.ru",
-                    Login = "user",
-                    Password = "user",
-                    RegistrationDate = DateTime.Now,
-                    Avatar = "http://romanroadtrust.co.uk/wp-content/uploads/2018/01/profile-icon-png-898-300x300.png"
-                });
-                context.SaveChanges();
-            }
-
-            if (context.Posts.Count() == 0)
-            {
-                string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "posts.txt");
-                List<Post> posts = JsonConvert.DeserializeObject<List<Post>>(File.ReadAllText(filePath));
-
-                foreach (var p in posts)
-                {
-                    context.Posts.Add(new Post()
-                    {
-                        Title = p.Title,
-                        Preview = p.Preview,
-                        Text = p.Text,
-                        Date = DateTime.Now,
-                        Image = p.Image,
-                        User = context.Users.FirstOrDefault()
-                    });
-                }
-                context.SaveChanges();
-            }
-        }
-
         public async Task<List<Post>> GetAllPosts()
         {
             return await context.Posts.ToListAsync();

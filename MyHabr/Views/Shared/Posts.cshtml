@@ -5,7 +5,7 @@
     <li style="text-align:left; padding:10px;">
         <div class="post_info">
             <img class="icon" src="@p.User.Avatar" />
-             <p>@p.User.Email</p>
+            @Html.ActionLink(@p.User.Email, "Info", "User", new { @p.User.Id }, htmlAttributes: new { @class = "email-link" })
             <p>@p.Date.ToString("g")</p>
         </div>
 

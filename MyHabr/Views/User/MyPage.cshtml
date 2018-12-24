@@ -1,0 +1,30 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "My Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content">
+    <h2>Hello, @Model.Email</h2>
+    <img src="@Model.Avatar" />
+    <h2>Posts</h2>
+    @{Html.RenderPartial("Posts", Model.Posts);}
+    <br />
+
+    <a href='#' onclick="btnModalOpen()" class="btn">+</a>
+
+    @Html.Partial("NewPostModalView", new NewPostViewModel())
+</div>
+
+<script>
+    function btnModalOpen() {
+        document.getElementById('modalPost').style.display = "block";
+    }
+
+    function btnModalClose() {
+        document.getElementById('modalPost').style.display = "none";
+    }
+</script>
+
+

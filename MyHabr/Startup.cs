@@ -61,6 +61,11 @@ namespace MyHabr
                    defaults: new { controller = "User", action = "Info" }
                    );
                 routeBuilder.MapRoute(
+                   name: "me",
+                   template: "/me",
+                   defaults: new { controller = "User", action = "MyPage" }
+                   );
+                routeBuilder.MapRoute(
                   name: "signin",
                   template: "/signin",
                   defaults: new { controller = "User", action = "SignIn" }

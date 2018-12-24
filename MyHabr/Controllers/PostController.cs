@@ -52,7 +52,7 @@ namespace MyHabr.Controllers
             Comment c = await postService.AddComment(Int32.Parse(Request.Cookies["user"]), model.PostId, model.Text);
             if (c!= null)
                 return Json(new { success = true, c.User.Avatar, c.User.Email, Date = c.Date.ToString("g"), c.Text });
-            return Json(new { success = false, responseText = "error" });
+            return BadRequest();
         }
 
         [HttpPost]
@@ -60,7 +60,7 @@ namespace MyHabr.Controllers
         {
             SetIsAuth();
             await postService.AddPost(Int32.Parse(Request.Cookies["user"]), model.Title, model.Preview, model.Text, model.Image);
-            return RedirectToAction("Info", "User");
+            return RedirectToAction("MyPage", "User");
         }
     }
 }

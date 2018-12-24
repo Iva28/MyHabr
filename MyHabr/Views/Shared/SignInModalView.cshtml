@@ -30,7 +30,7 @@
         if (!$form.valid()) return false;
         $.ajax({
             type: 'POST',
-            url: "/User/SignIn",
+            url: "/signIn",
             data: $('#signInForm').serialize(),
             success: function () {
                 $("#modal").hide();

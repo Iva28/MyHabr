@@ -18,19 +18,20 @@
         </a>
         @if (ViewBag.IsAuth == true)
         {
+            <a href="@Url.Action("MyPage", "User")" class="myPageBtn">My Page</a>
             <a href="@Url.Action("SignOut", "User")" class="logBtn" id="signOut">Sign Out</a>
-            <a href="@Url.Action("Info", "User")" class="myPageBtn">My Page</a>
         }
 
         else
         {
-            <a href='#' onclick="btnOpen()" class="logBtn">Sign In</a>
+            <a onclick="btnOpen()" class="logBtn">Sign In</a>
         }
     </header>
     <div class="page">
         @RenderBody()
     </div>
     @Html.Partial("SignInModalView", new SignInViewModel())
+
 
     <script>
         function btnOpen() {
@@ -47,9 +48,14 @@
             e.preventDefault();
             $.ajax({
                 type: 'GET',
-                url: "/User/SignOut",
+                url: "/signOut",
                 success: function () {
-                    location.reload();
+                    if (location.pathname == "/me") {
+                        window.location.href = "/";
+                    }
+                    else {
+                        location.reload();
+                    }
                 }
             });
         });

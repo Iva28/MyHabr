@@ -28,6 +28,24 @@ namespace MyHabr.Models
 
             modelBuilder.Entity<User>().HasData(new {
                 Id = 1,
+                Email = "tikovka1@mail.ru",
+                Login = "tikovka1",
+                Password = "tikovka1",
+                RegistrationDate = DateTime.Now,
+                Avatar = "http://romanroadtrust.co.uk/wp-content/uploads/2018/01/profile-icon-png-898-300x300.png"
+            },
+            new
+            {
+                Id = 2,
+                Email = "tikovka2@mail.ru",
+                Login = "tikovka2",
+                Password = "tikovka2",
+                RegistrationDate = DateTime.Now,
+                Avatar = "http://romanroadtrust.co.uk/wp-content/uploads/2018/01/profile-icon-png-898-300x300.png"
+            },
+            new
+            {
+                Id = 3,
                 Email = "user@mail.ru",
                 Login = "user",
                 Password = "user",
@@ -38,12 +56,18 @@ namespace MyHabr.Models
             string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "posts.txt");
             List<Post> posts = JsonConvert.DeserializeObject<List<Post>>(File.ReadAllText(filePath));
 
-            int id = 1;
+            int postId = 1;
+            int userId = 1;
+
             foreach (var p in posts) {
+                if (postId == 3)
+                    userId++;
+                else if (postId == 5)
+                    userId++;
                 modelBuilder.Entity<Post>().HasData(new {
-                    Id = id, p.Title, p.Preview, p.Text, Date = DateTime.Now, p.Image, UserId = 1
+                    Id = postId, p.Title, p.Preview, p.Text, Date = DateTime.Now, p.Image, UserId = userId
                 });
-                id++;
+                postId++;
             }
         }
     }

@@ -36,7 +36,20 @@ namespace MyHabr.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Info()
+        public async Task<IActionResult> Info(int id)
+        {
+            SetIsAuth();
+            if (ViewBag.IsAuth && id == Int32.Parse(Request.Cookies["user"])) {
+                return RedirectToAction("MyPage");
+            }
+            else {
+                var us = await userService.GetUserById(id);
+                return View(us);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> MyPage()
         {
             SetIsAuth();
             var us = await userService.GetUserById(Int32.Parse(Request.Cookies["user"]));
